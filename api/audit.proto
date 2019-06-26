@@ -1,0 +1,35 @@
+syntax = "proto3";
+package api;
+
+message CreateRequest {
+    string message = 1;
+}
+
+message CreateResponse {
+    string message = 1;
+}
+
+message ReadUserRequest {
+    string message = 1;
+}
+
+message ReadUserResponse {
+    string message = 1;
+}
+
+message ReadOrgRequest {
+    string message = 1;
+}
+
+message ReadOrgResponse {
+    string message = 1;
+}
+
+service AuditService {
+    rpc Create(CreateRequest) returns (CreateResponse);
+
+    rpc ReadUser(ReadUserRequest) returns (ReadUserResponse);
+
+    rpc ReadOrg(ReadOrgRequest) returns (ReadOrgResponse);
+
+}
