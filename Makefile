@@ -6,3 +6,6 @@ compose-up:
 
 compose-down:
 	docker-compose -f deployments/docker-compose.yml down
+
+proto:
+	protoc --proto_path=api --go_out=plugins=grpc:pkg/api api.proto
