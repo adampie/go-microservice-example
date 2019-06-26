@@ -1,0 +1,14 @@
+version: '3'
+services:
+  service:
+    build:
+      context: ../
+      dockerfile: build/Dockerfile
+    ports:
+      - "8080:8080"
+    links:
+      - postgres
+  postgres:
+    image: postgres
+    ports:
+      - "5432:5432"
