@@ -31,5 +31,4 @@ service AuditService {
     rpc ReadUser(ReadUserRequest) returns (ReadUserResponse);
 
     rpc ReadOrg(ReadOrgRequest) returns (ReadOrgResponse);
-
 }
