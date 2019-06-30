@@ -5,12 +5,14 @@ RUN apk update \
     && apk add --no-cache git ca-certificates \
     && update-ca-certificates
 RUN adduser -D -g '' appuser
-RUN go mod download \
+RUN go mod download
 RUN go mod verify
 RUN CGO_ENABLED=0 GOOS=linux GOARCH=amd64 go build -a -o /app .
+RUN chmod +x /app
 
 FROM scratch
 COPY --from=builder /app ./
+COPY --from=builder /build/migrations /migrations/
 COPY --from=builder /etc/passwd /etc/passwd
 COPY --from=builder /etc/ssl/certs/ca-certificates.crt /etc/ssl/certs/
 USER appuser
