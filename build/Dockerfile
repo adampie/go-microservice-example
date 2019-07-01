@@ -1,5 +1,6 @@
 FROM golang:alpine AS builder
-ADD . /build/
+COPY go.mod /build/
+COPY go.sum /build/
 WORKDIR /build/
 RUN apk update \
     && apk add --no-cache git ca-certificates \
@@ -7,6 +8,7 @@ RUN apk update \
 RUN adduser -D -g '' appuser
 RUN go mod download
 RUN go mod verify
+ADD . /build/
 RUN CGO_ENABLED=0 GOOS=linux GOARCH=amd64 go build -a -o /app .
 RUN chmod +x /app
 

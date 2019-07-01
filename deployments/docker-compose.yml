@@ -1,14 +1,28 @@
-version: '3'
+version: '3.7'
 services:
-  service:
+
+  app:
     build:
       context: ../
       dockerfile: build/Dockerfile
+    environment:
+      - DB_URL=postgres
     ports:
       - "8080:8080"
     links:
       - postgres
+    depends_on:
+      - postgres
+    networks:
+      - overlay
+    restart: always
+
   postgres:
     image: postgres
     ports:
       - "5432:5432"
+    networks:
+      - overlay
+
+networks:
+  overlay:
