@@ -2,27 +2,33 @@ syntax = "proto3";
 package api;
 
 message CreateRequest {
-    string message = 1;
+    string user_id = 1;
+    string org_id = 2;
+    string ip_address = 3;
+    string target = 4;
+    string action = 5;
+    string action_type = 6;
+    string event_name = 7;
 }
 
 message CreateResponse {
-    string message = 1;
+    string response = 1;
 }
 
 message ReadUserRequest {
-    string message = 1;
+    string user_id = 1;
 }
 
 message ReadUserResponse {
-    string message = 1;
+    string response = 1;
 }
 
 message ReadOrgRequest {
-    string message = 1;
+    string org_id = 2;
 }
 
 message ReadOrgResponse {
-    string message = 1;
+    string response = 1;
 }
 
 service AuditService {
