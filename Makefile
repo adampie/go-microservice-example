@@ -1,6 +1,9 @@
 docker-build:
 	docker build -f build/Dockerfile -t go-microservice-example .
 
+compose-build:
+	docker-compose -f deployments/docker-compose.yml up --build
+
 compose-up:
 	docker-compose -f deployments/docker-compose.yml up
 
