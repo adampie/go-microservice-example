@@ -1,8 +1,8 @@
 CREATE TABLE audit
 (
-    id	INTEGER PRIMARY KEY,
+    id uuid PRIMARY KEY,
     user_id	TEXT NOT NULL,
-    org_id	TEXT,
+    org_id TEXT,
     ip_address TEXT NOT NULL,
     target TEXT NOT NULL,
     action TEXT NOT NULL,
