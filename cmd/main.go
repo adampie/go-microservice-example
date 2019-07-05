@@ -2,12 +2,13 @@ package main
 
 import (
 	"go-microservice-example/internal/audit"
-	"go-microservice-example/internal/migrations"
+	"go-microservice-example/internal/database"
 	"go-microservice-example/pkg/api"
+	"net"
+
 	"go.uber.org/zap"
 	"google.golang.org/grpc"
 	"google.golang.org/grpc/reflection"
-	"net"
 
 	"github.com/spf13/viper"
 )
@@ -20,7 +21,7 @@ func main() {
 	logger, _ := zap.NewDevelopment()
 	zap.ReplaceGlobals(logger)
 
-	migrations.Migrate()
+	database.Migrate()
 
 	listener, err := net.Listen("tcp", ":8080")
 	if err != nil {

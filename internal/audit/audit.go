@@ -2,6 +2,7 @@ package audit
 
 import (
 	"context"
+	"github.com/google/uuid"
 	"go-microservice-example/pkg/api"
 
 	"go.uber.org/zap"
@@ -11,15 +12,19 @@ type Server struct {
 }
 
 func (s *Server) Create(ctx context.Context, request *api.CreateRequest) (*api.CreateResponse, error) {
-	zap.S().Info(
-		request.GetUserId(),
-		request.GetOrgId(),
-		request.GetIpAddress(),
-		request.GetTarget(),
-		request.GetAction(),
-		request.GetActionType(),
-		request.GetEventName(),
-	)
+
+	req := Create{
+		id:         uuid.New(),
+		userId:     request.GetUserId(),
+		orgId:      request.GetOrgId(),
+		ipAddress:  request.GetIpAddress(),
+		target:     request.GetTarget(),
+		action:     request.GetAction(),
+		actionType: request.GetActionType(),
+		eventName:  request.GetEventName(),
+	}
+
+	zap.S().Info(req)
 
 	return &api.CreateResponse{Response: "HELLO RESPONSE"}, nil
 }
