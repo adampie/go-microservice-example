@@ -1,9 +1,9 @@
 package main
 
 import (
+	"go-microservice-example/api"
 	"go-microservice-example/internal/audit"
 	"go-microservice-example/internal/database"
-	"go-microservice-example/pkg/api"
 	"net"
 
 	"go.uber.org/zap"

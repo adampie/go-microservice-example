@@ -6,7 +6,6 @@ import (
 	"github.com/golang-migrate/migrate/v4"
 	"github.com/golang-migrate/migrate/v4/database/postgres"
 	_ "github.com/golang-migrate/migrate/v4/source/file"
-	"github.com/google/uuid"
 	_ "github.com/lib/pq"
 	"github.com/spf13/viper"
 	"go.uber.org/zap"
@@ -65,12 +64,5 @@ func Migrate() {
 
 	if err := m.Up(); err != nil && err != migrate.ErrNoChange {
 		zap.S().Fatal(err)
-	}
-
-	sqlStatement := `INSERT INTO audit (id, user_id, org_id, ip_address, target, action, action_type, event_name) VALUES ($1, $2, $3, $4, $5, $6, $7, $8)`
-	id := uuid.New()
-	err = db.QueryRow(sqlStatement, id, "2", "3", "4", "5", "6", "7", "8").Scan()
-	if err != nil {
-		zap.S().Error(err)
 	}
 }

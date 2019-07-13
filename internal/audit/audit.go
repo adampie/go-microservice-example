@@ -3,7 +3,7 @@ package audit
 import (
 	"context"
 	"github.com/google/uuid"
-	"go-microservice-example/pkg/api"
+	"go-microservice-example/api"
 
 	"go.uber.org/zap"
 )
