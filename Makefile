@@ -16,8 +16,5 @@ compose-down:
 postgres-up:
 	docker-compose -f deployments/docker-compose.yml up postgres
 
-postgres-down:
-	docker-compose -f deployments/docker-compose.yml down postgres
-
 proto:
 	protoc --proto_path=api --go_out=plugins=grpc:api audit.proto

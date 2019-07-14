@@ -1,16 +1,14 @@
 package main
 
 import (
+	"github.com/spf13/viper"
 	"go-microservice-example/api"
 	"go-microservice-example/internal/audit"
-	"go-microservice-example/internal/database"
-	"net"
-
+	"go-microservice-example/internal/db"
 	"go.uber.org/zap"
 	"google.golang.org/grpc"
 	"google.golang.org/grpc/reflection"
-
-	"github.com/spf13/viper"
+	"net"
 )
 
 func init() {
@@ -21,7 +19,7 @@ func main() {
 	logger, _ := zap.NewDevelopment()
 	zap.ReplaceGlobals(logger)
 
-	database.Migrate()
+	db.Migrate()
 
 	listener, err := net.Listen("tcp", ":8080")
 	if err != nil {
@@ -36,4 +34,5 @@ func main() {
 	if err := srv.Serve(listener); err != nil {
 		zap.S().Fatal(err)
 	}
+
 }
