@@ -2,8 +2,9 @@ package audit
 
 import (
 	"context"
-	"github.com/google/uuid"
 	"go-microservice-example/api"
+
+	"github.com/google/uuid"
 
 	"go.uber.org/zap"
 )
