@@ -11,16 +11,18 @@ import (
 	"go.uber.org/zap"
 )
 
+// Server gRPC struct
 type Server struct {
 }
 
+// Create a audit log
 func (s *Server) Create(ctx context.Context, request *api.CreateRequest) (*api.CreateResponse, error) {
 
 	req := model.Create{
-		Id:         uuid.New(),
-		UserId:     request.GetUserId(),
-		OrgId:      request.GetOrgId(),
-		IpAddress:  request.GetIpAddress(),
+		ID:         uuid.New(),
+		UserID:     request.GetUserId(),
+		OrgID:      request.GetOrgId(),
+		IPAddress:  request.GetIpAddress(),
 		Target:     request.GetTarget(),
 		Action:     request.GetAction(),
 		ActionType: request.GetActionType(),
@@ -34,10 +36,11 @@ func (s *Server) Create(ctx context.Context, request *api.CreateRequest) (*api.C
 	return &api.CreateResponse{Response: "CREATE RESPONSE"}, nil
 }
 
+// ReadUser gets all the audit relevant to the user
 func (s *Server) ReadUser(ctx context.Context, request *api.ReadUserRequest) (*api.ReadUserResponse, error) {
 
 	req := model.User{
-		UserId: request.GetUserId(),
+		UserID: request.GetUserId(),
 	}
 
 	zap.S().Info(req)
@@ -47,10 +50,11 @@ func (s *Server) ReadUser(ctx context.Context, request *api.ReadUserRequest) (*a
 	return &api.ReadUserResponse{Response: "READ USER RESPONSE"}, nil
 }
 
+// ReadOrg gets all the audit relevant to the organisation
 func (s *Server) ReadOrg(ctx context.Context, request *api.ReadOrgRequest) (*api.ReadOrgResponse, error) {
 
 	req := model.Org{
-		OrgId: request.GetOrgId(),
+		OrgID: request.GetOrgId(),
 	}
 
 	zap.S().Info(req)

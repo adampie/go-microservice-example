@@ -41,11 +41,11 @@ func init() {
 	zap.S().Debug("DB_DATABASE: ", database)
 	zap.S().Debug("DB_SSLMODE: ", sslmode)
 
-	dbUrl := "postgres://" + user + "@" + url + ":" + port + "/" + database + "?sslmode=" + sslmode
+	dbURL := "postgres://" + user + "@" + url + ":" + port + "/" + database + "?sslmode=" + sslmode
 
 	var err error
 
-	db, err = sql.Open("postgres", dbUrl)
+	db, err = sql.Open("postgres", dbURL)
 	if err != nil {
 		zap.S().Fatal(err)
 	}
@@ -56,6 +56,7 @@ func init() {
 	}
 }
 
+// GetDB returns a DB connection
 func GetDB() *sql.DB {
 	return db
 }
