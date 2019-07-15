@@ -14,7 +14,13 @@ func Migrate() {
 	zap.ReplaceGlobals(logger)
 
 	db := GetDB()
-	defer db.Close()
+
+	defer func() {
+		err := db.Close()
+		if err != nil {
+			zap.S().Fatal(err)
+		}
+	}()
 
 	driver, err := postgres.WithInstance(db, &postgres.Config{})
 	if err != nil {
