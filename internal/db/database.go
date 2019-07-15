@@ -2,8 +2,9 @@ package db
 
 import (
 	"database/sql"
-	"go.uber.org/zap"
 	"os"
+
+	"go.uber.org/zap"
 )
 
 var db *sql.DB

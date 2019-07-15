@@ -14,3 +14,11 @@ type Create struct {
 	ActionType string
 	EventName  string
 }
+
+type Org struct {
+	OrgId string
+}
+
+type User struct {
+	UserId string
+}

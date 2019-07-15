@@ -4,10 +4,11 @@ import (
 	"go-microservice-example/api"
 	"go-microservice-example/internal/audit"
 	"go-microservice-example/internal/db"
+	"net"
+
 	"go.uber.org/zap"
 	"google.golang.org/grpc"
 	"google.golang.org/grpc/reflection"
-	"net"
 )
 
 func main() {

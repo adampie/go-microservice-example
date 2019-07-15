@@ -24,7 +24,7 @@ message ReadUserResponse {
 }
 
 message ReadOrgRequest {
-    string org_id = 2;
+    string org_id = 1;
 }
 
 message ReadOrgResponse {

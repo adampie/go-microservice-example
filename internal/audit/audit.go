@@ -31,13 +31,31 @@ func (s *Server) Create(ctx context.Context, request *api.CreateRequest) (*api.C
 
 	db.CreateAudit(req)
 
-	return &api.CreateResponse{Response: "HELLO RESPONSE"}, nil
+	return &api.CreateResponse{Response: "CREATE RESPONSE"}, nil
 }
 
-func (s *Server) ReadUser(context.Context, *api.ReadUserRequest) (*api.ReadUserResponse, error) {
-	panic("implement me")
+func (s *Server) ReadUser(ctx context.Context, request *api.ReadUserRequest) (*api.ReadUserResponse, error) {
+
+	req := model.User{
+		UserId: request.GetUserId(),
+	}
+
+	zap.S().Info(req)
+
+	db.ReadUser(req)
+
+	return &api.ReadUserResponse{Response: "READ USER RESPONSE"}, nil
 }
 
-func (s *Server) ReadOrg(context.Context, *api.ReadOrgRequest) (*api.ReadOrgResponse, error) {
-	panic("implement me")
+func (s *Server) ReadOrg(ctx context.Context, request *api.ReadOrgRequest) (*api.ReadOrgResponse, error) {
+
+	req := model.Org{
+		OrgId: request.GetOrgId(),
+	}
+
+	zap.S().Info(req)
+
+	db.ReadOrg(req)
+
+	return &api.ReadOrgResponse{Response: "READ ORG RESPONSE"}, nil
 }
