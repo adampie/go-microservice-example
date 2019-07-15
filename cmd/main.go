@@ -1,7 +1,6 @@
 package main
 
 import (
-	"github.com/spf13/viper"
 	"go-microservice-example/api"
 	"go-microservice-example/internal/audit"
 	"go-microservice-example/internal/db"
@@ -10,10 +9,6 @@ import (
 	"google.golang.org/grpc/reflection"
 	"net"
 )
-
-func init() {
-	viper.AutomaticEnv()
-}
 
 func main() {
 	logger, _ := zap.NewDevelopment()
