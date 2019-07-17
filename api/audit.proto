@@ -1,6 +1,16 @@
 syntax = "proto3";
 package api;
 
+// AuditService should only create and read user and org audits.
+service AuditService {
+    // Create a new audit.
+    rpc Create(CreateRequest) returns (CreateResponse);
+    // ReadUser audit log.
+    rpc ReadUser(ReadUserRequest) returns (ReadUserResponse);
+    // ReadOrg audit log.
+    rpc ReadOrg(ReadOrgRequest) returns (ReadOrgResponse);
+  }
+
 message CreateRequest {
     string user_id = 1;
     string org_id = 2;
@@ -9,32 +19,25 @@ message CreateRequest {
     string action = 5;
     string action_type = 6;
     string event_name = 7;
-}
-
-message CreateResponse {
+  }
+  
+  message CreateResponse {
     string response = 1;
-}
-
-message ReadUserRequest {
+  }
+  
+  message ReadUserRequest {
     string user_id = 1;
-}
-
-message ReadUserResponse {
+  }
+  
+  message ReadUserResponse {
     string response = 1;
-}
-
-message ReadOrgRequest {
+  }
+  
+  message ReadOrgRequest {
     string org_id = 1;
-}
-
-message ReadOrgResponse {
+  }
+  
+  message ReadOrgResponse {
     string response = 1;
-}
-
-service AuditService {
-    rpc Create(CreateRequest) returns (CreateResponse);
-
-    rpc ReadUser(ReadUserRequest) returns (ReadUserResponse);
-
-    rpc ReadOrg(ReadOrgRequest) returns (ReadOrgResponse);
-}
+  }
+  
