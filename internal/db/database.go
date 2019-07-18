@@ -9,7 +9,7 @@ import (
 
 var db *sql.DB
 
-func init() {
+func Init() {
 	logger, _ := zap.NewDevelopment()
 	zap.ReplaceGlobals(logger)
 

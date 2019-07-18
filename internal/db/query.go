@@ -1,14 +1,14 @@
 package db
 
 import (
+	"database/sql"
 	"go-microservice-example/internal/model"
 
 	"go.uber.org/zap"
 )
 
 // CreateAudit create a new audit request
-func CreateAudit(c model.Create) {
-	db := GetDB()
+func CreateAudit(db *sql.DB, c model.Create) string {
 
 	id := c.ID
 	userID := c.UserID
@@ -26,8 +26,7 @@ func CreateAudit(c model.Create) {
 }
 
 // ReadUser returns all the audit data relevant to the user
-func ReadUser(u model.User) {
-	db := GetDB()
+func ReadUser(db *sql.DB, u model.User) {
 
 	userID := u.UserID
 
@@ -40,8 +39,7 @@ func ReadUser(u model.User) {
 }
 
 // ReadOrg returns all the audit data relevant to the Org
-func ReadOrg(o model.Org) {
-	db := GetDB()
+func ReadOrg(db *sql.DB, o model.Org) {
 
 	orgID := o.OrgID
 

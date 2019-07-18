@@ -15,6 +15,7 @@ func main() {
 	logger, _ := zap.NewDevelopment()
 	zap.ReplaceGlobals(logger)
 
+	db.Init()
 	db.Migrate()
 
 	listener, err := net.Listen("tcp", ":8080")

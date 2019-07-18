@@ -31,7 +31,9 @@ func (s *Server) Create(ctx context.Context, request *api.CreateRequest) (*api.C
 
 	zap.S().Info(req)
 
-	db.CreateAudit(req)
+	dbc := db.GetDB()
+
+	db.CreateAudit(dbc, req)
 
 	return &api.CreateResponse{Response: "CREATE RESPONSE"}, nil
 }
@@ -45,7 +47,9 @@ func (s *Server) ReadUser(ctx context.Context, request *api.ReadUserRequest) (*a
 
 	zap.S().Info(req)
 
-	db.ReadUser(req)
+	dbc := db.GetDB()
+
+	db.ReadUser(dbc, req)
 
 	return &api.ReadUserResponse{Response: "READ USER RESPONSE"}, nil
 }
@@ -59,7 +63,9 @@ func (s *Server) ReadOrg(ctx context.Context, request *api.ReadOrgRequest) (*api
 
 	zap.S().Info(req)
 
-	db.ReadOrg(req)
+	dbc := db.GetDB()
+
+	db.ReadOrg(dbc, req)
 
 	return &api.ReadOrgResponse{Response: "READ ORG RESPONSE"}, nil
 }
